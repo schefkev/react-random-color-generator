@@ -1,4 +1,5 @@
 import col from 'randomcolor';
+import randomColor from 'randomcolor';
 import { useState } from 'react';
 
 export default function App() {
@@ -9,7 +10,7 @@ export default function App() {
     luminosity: lum,
   });
 
-  const [color, setColor] = useState(randColor);
+  const [color, setColor] = useState(randomColor());
   const [width, setWidth] = useState('');
   const [height, setHeight] = useState('');
 
@@ -36,12 +37,22 @@ export default function App() {
       >
         Generated Color: {color}
       </div>
+      <button
+        onClick={() => {
+          setColor(randColor);
+          console.log('Generated Color:', randColor);
+        }}
+        // style={{
+        //   marginTop: '10px',
+        // }}
+      >
+        Generate
+      </button>
       <div>
         <input
           placeholder="Hue:"
-          type="text"
           value={hue}
-          onChange={(e) => setHue(e.target.value)}
+          onChange={(e) => setHue(e.currentTarget.value)}
           style={{
             marginTop: '5px',
           }}
@@ -50,9 +61,8 @@ export default function App() {
       <div>
         <input
           placeholder="Lum:"
-          type="text"
           value={lum}
-          onChange={(e) => setLum(e.target.value)}
+          onChange={(e) => setLum(e.currentTarget.value)}
           style={{
             marginTop: '5px',
           }}
@@ -63,7 +73,7 @@ export default function App() {
           placeholder="Width:"
           type="number"
           value={width}
-          onChange={(e) => setWidth(e.target.value)}
+          onChange={(e) => setWidth(e.currentTarget.value)}
           style={{
             marginTop: '5px',
           }}
@@ -74,23 +84,12 @@ export default function App() {
           placeholder="Height:"
           type="number"
           value={height}
-          onChange={(e) => setHeight(e.target.value)}
+          onChange={(e) => setHeight(e.currentTarget.value)}
           style={{
             marginTop: '5px',
           }}
         />
       </div>
-      <button
-        onClick={() => {
-          setColor(randColor);
-          console.log('Generated Color:', randColor);
-        }}
-        style={{
-          marginTop: '10px',
-        }}
-      >
-        Generate
-      </button>
     </div>
   );
 }
