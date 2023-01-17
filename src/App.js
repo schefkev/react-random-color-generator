@@ -1,6 +1,16 @@
+/** @jsxImportSource @emotion/react */
+
+import { css } from '@emotion/react';
 import col from 'randomcolor';
 import randomColor from 'randomcolor';
 import { useState } from 'react';
+
+const button = css`
+  background-color: yellow;
+  border-radius: 8px;
+  padding: 6px;
+  width: 100px;
+`;
 
 export default function App() {
   const [hue, setHue] = useState('');
@@ -10,7 +20,7 @@ export default function App() {
     luminosity: lum,
   });
 
-  const [color, setColor] = useState(randomColor());
+  const [color, setColor] = useState(randomColor);
   const [width, setWidth] = useState('');
   const [height, setHeight] = useState('');
 
@@ -30,7 +40,7 @@ export default function App() {
           placeItems: 'center',
           marginBottom: '10px',
           background: color,
-          // Smooth Color Transition:
+          // // Smooth Color Transition:
           transition: 'background 0.5s ease-in-out',
           padding: '3px',
         }}
@@ -42,6 +52,7 @@ export default function App() {
           setColor(randColor);
           console.log('Generated Color:', randColor);
         }}
+        css={button}
         // style={{
         //   marginTop: '10px',
         // }}
