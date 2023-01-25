@@ -53,9 +53,6 @@ export default function App() {
           console.log('Generated Color:', randColor);
         }}
         css={button}
-        // style={{
-        //   marginTop: '10px',
-        // }}
       >
         Generate
       </button>
